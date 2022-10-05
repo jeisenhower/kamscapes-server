@@ -17,7 +17,7 @@ app.use(express.static(distDir));*/
 
 app.use(express.static(__dirname + '/dist/kamscapes-app'));
 
-app.get('/*', (req, res) => {
+app.get('*', (req, res) => {
     //return res.sendFile(path.resolve('dist/kamscapes-app/index.html'));
     //res.sendFile(path.join(__dirname));
     res.sendFile(__dirname);
