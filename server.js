@@ -31,7 +31,7 @@ app.post('/api/quotes', (req, res) => {
     const data = req.body;
     console.log(data);
     return res.status(201).json({
-        data: data
+        message: 'success'
     });
 });
 
