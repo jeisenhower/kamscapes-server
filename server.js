@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-//var path = require('path');
+var path = require('path');
 var http = require('http');
 
 var app = express();
@@ -18,10 +18,14 @@ app.use(express.static(distDir));*/
 app.use(express.static(__dirname + '/dist/kamscapes-app'));
 
 app.get('*', (req, res) => {
-    //return res.sendFile(path.resolve('dist/kamscapes-app/index.html'));
+    res.sendFile(path.resolve('dist/kamscapes-app/index.html'));
     //res.sendFile(path.join(__dirname));
-    res.sendFile(__dirname);
+    //res.sendFile(__dirname);
 });
+
+/*app.all('*', (req, res) => {
+    res.sendFile(path.re)
+})*/
 
 app.post('/api/quotes', (req, res) => {
     const data = req.body;
