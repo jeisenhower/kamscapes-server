@@ -8,13 +8,13 @@ var app = express();
 // Redirect any http requests to https so we can avoid
 // insecure traffic
 app.use(function(req, res, next) {
-    if (req.headers['X-forwarded-proto' !== 'https']) {
-        // If user has typed in the heroku default hosting address
-        // (appname.herokuapp.com), redirect to the hosted site
-        if (req.headers.host === 'kamscapes.herokuapp.com') {
-            return res.redirect(301, 'https://www.kamscapes.com');
-        }
+    // If user has typed in the heroku default hosting address
+    // (appname.herokuapp.com), redirect to the hosted site
+    if (req.headers.host === 'kamscapes.herokuapp.com') {
+        return res.redirect(301, 'https://www.kamscapes.com');
+    }
 
+    if (req.headers['X-forwarded-proto' !== 'https']) {
         // TODO: Check if the user has typed in just kamscapes.com to 
         // the browser. If that is the case, redirect to the actual
         // address (which is www.kamscapes.com)
