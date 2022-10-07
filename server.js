@@ -14,7 +14,7 @@ app.use(function(req, res, next) {
         return res.redirect(301, 'https://www.kamscapes.com');
     }
 
-    if (req.headers['X-forwarded-proto' !== 'https']) {
+    if (req.headers['X-forwarded-proto'] !== 'https') {
         // TODO: Check if the user has typed in just kamscapes.com to 
         // the browser. If that is the case, redirect to the actual
         // address (which is www.kamscapes.com)
