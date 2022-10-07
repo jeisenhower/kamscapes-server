@@ -10,7 +10,7 @@ var app = express();
 app.use(function(req, res, next) {
     // If user has typed in the heroku default hosting address
     // (appname.herokuapp.com), redirect to the hosted site
-    if (req.headers.host === 'kamscapes.herokuapp.com') {
+    /*if (req.headers.host === 'kamscapes.herokuapp.com') {
         return res.redirect(301, 'https://www.kamscapes.com');
     }
 
@@ -19,11 +19,18 @@ app.use(function(req, res, next) {
         // the browser. If that is the case, redirect to the actual
         // address (which is www.kamscapes.com)
         
+
         // Handle the http and force/redirect it to https
         //return res.redirect('https://' + req.headers.host + req.url);
         return res.redirect('https://' + req.headers.host + req.url);
     } else {
         // If https is already being used, we do nothing and call next
+        return next();
+    }*/
+    let inputBaseUrl = req.headers['x-forwarded-proto'] + req.headers.host;
+    if (inputBaseUrl !== 'https://www.kamscapes.com') {
+        return redirect('https://www.kamscapes.com/' + req.url)
+    } else {
         return next();
     }
 });
