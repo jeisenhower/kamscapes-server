@@ -29,7 +29,7 @@ app.use(function(req, res, next) {
     }*/
     let inputBaseUrl = req.headers['x-forwarded-proto'] + req.headers.host;
     if (inputBaseUrl !== 'https://www.kamscapes.com') {
-        return redirect('https://www.kamscapes.com/' + req.url)
+        return redirect('https://www.kamscapes.com' + req.url)
     } else {
         return next();
     }
