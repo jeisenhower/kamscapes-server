@@ -14,14 +14,14 @@ app.use(function(req, res, next) {
         return res.redirect(301, 'https://www.kamscapes.com');
     }
 
-    if (req.headers['X-forwarded-proto'] !== 'https') {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
         // TODO: Check if the user has typed in just kamscapes.com to 
         // the browser. If that is the case, redirect to the actual
         // address (which is www.kamscapes.com)
         
         // Handle the http and force/redirect it to https
         //return res.redirect('https://' + req.headers.host + req.url);
-        return res.redirect('https://www.kamscapes.com');
+        return res.redirect('https://' + req.headers.host + req.url);
     } else {
         // If https is already being used, we do nothing and call next
         return next();
