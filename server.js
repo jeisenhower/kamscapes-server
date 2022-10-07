@@ -20,7 +20,8 @@ app.use(function(req, res, next) {
         // address (which is www.kamscapes.com)
         
         // Handle the http and force/redirect it to https
-        return res.redirect('https://' + req.headers.host + req.url);
+        //return res.redirect('https://' + req.headers.host + req.url);
+        return res.redirect('https://www.kamscapes.com');
     } else {
         // If https is already being used, we do nothing and call next
         return next();
