@@ -68,7 +68,7 @@ app.post('/api/quotes', (req, res) => {
       };
       const recipients = [
         {
-          email: "eisenhower5hockey@gmail.com",
+          email: "kamscapes@gmail.com",
         }
       ];
       
