@@ -2,6 +2,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var http = require('http');
+import { MailtrapClient } from "mailtrap";
+
+const TOKEN = "f91f9d93b5fce67aac30f416ca80bf45";
+const ENDPOINT = "https://send.api.mailtrap.io/";
+
+const client = new MailtrapClient({ endpoint: ENDPOINT, token: TOKEN });
 
 var app = express();
 
@@ -55,10 +61,35 @@ app.get('*', (req, res) => {
 app.post('/api/quotes', (req, res) => {
     const data = req.body;
     console.log(data);
-    return res.status(201).json({
+
+    const sender = {
+        email: "quotes@kamscapes.com",
+        name: "Quotes",
+      };
+      const recipients = [
+        {
+          email: "eisenhower5hockey@gmail.com",
+        }
+      ];
+      
+      client
+        .send({
+          from: sender,
+          to: recipients,
+          subject: `Quote Request from ${data.fname}`,
+          text: JSON.stringify(data),
+          category: "Quote Requests",
+        })
+        .then(() => {
+            return res.status(201).json({status: 201, message: 'success'});
+        }, console.error);
+
+
+
+    /*return res.status(201).json({
         status: 201,
         message: 'success'
-    });
+    });*/
 });
 
 /*app.get('/api/quotes', (req, res) => {
