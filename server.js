@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var http = require('http');
-import { MailtrapClient } from "mailtrap";
+var { MailtrapClient } = require("mailtrap");
 
 const TOKEN = "f91f9d93b5fce67aac30f416ca80bf45";
 const ENDPOINT = "https://send.api.mailtrap.io/";
