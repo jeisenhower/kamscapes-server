@@ -79,7 +79,7 @@ app.post('/api/quotes', (req, res) => {
           subject: `Quote Request from ${data.fname}`,
           //text: JSON.stringify(data),
           text: `Name: ${data.fname} ${data.lname}` + '\n' + `Phone: ${data.phone}` + '\n' + `email: ${data.email}` + '\n' + 
-          `address: ${data.address}` + '\n' `Requested Services: ${data.comment}`,
+          `address: ${data.address}` + '\n' + `Requested Services: ${data.comment}`,
           category: "Quote Requests",
         })
         .then(() => {
